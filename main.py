@@ -37,6 +37,7 @@ def start():
             }).json()
             if "BANNED" in str(req_game):
                 print(f"{red}[{yellow}*{red}] {white}Account Got Banned")
+                break
             elif "SERVER_ERROR" in str(req_game):
                 continue
             elif "User" in str(req_game):
