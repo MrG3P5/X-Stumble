@@ -42,7 +42,7 @@ Download : [HTTP Cannary](https://apkcombo.com/id/httpcanary-http-sniffer-captur
 pkg update && pkg upgrade -y
 ```
 ```sh
-pkg install python3-pip python3 git -y
+pkg install python3 git -y
 ```
 ```sh
 git clone https://github.com/MrG3P5/X-Stumble
