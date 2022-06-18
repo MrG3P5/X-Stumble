@@ -9,6 +9,10 @@
 </p>
 <br>
 
+## Tools Preview
+![index](https://raw.githubusercontent.com/MrG3P5/X-Stumble/main/Screenshot_2022-06-18_17_47_11.png)
+
+
 ## How to get auth token ?
 Download : [HTTP Cannary](https://apkcombo.com/id/httpcanary-http-sniffer-capture-analysis/com.guoshi.httpcanary)
 1. Install HTTP Cannary or any Traffic Intercept apk to your phone
