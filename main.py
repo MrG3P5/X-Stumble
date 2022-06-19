@@ -4,6 +4,7 @@
 import pyfiglet
 import requests
 import os
+from threading import Thread
 from colorama import Fore, init
 from random import randint
 
@@ -24,20 +25,18 @@ def banner(str):
     print(f"\t\t\t{red}[ {white}Created By X - MrG3P5 {red}]")
     print(f"\t\t{red}[ {white}This tools for auto win in game stumble{red} ]\n")
 
-def start():
+def start(token):
     global ATTEMP_R1, ATTEMP_R2, ATTEMP_R3
     banner("X - Stumble")
-    input_auth = input(f"{red}[{white}?{red}] {white}Enter your auth token : ")
 
     while True:
         try:
             random_round = randint(1, 3)
             req_game = requests.get(f"http://kitkabackend.eastus.cloudapp.azure.com:5010/round/finishv2/{random_round}", headers={
-                "authorization": input_auth
+                "authorization": token
             }).json()
             if "BANNED" in str(req_game):
                 print(f"{red}[{yellow}*{red}] {white}Account Got Banned")
-                break
             elif "SERVER_ERROR" in str(req_game):
                 continue
             elif "User" in str(req_game):
@@ -66,4 +65,7 @@ def start():
                     continue
 
 if __name__=="__main__":
-    start()
+    banner("X - Stumble")
+    input_auth = input(f"{red}[{white}?{red}] {white}Enter your auth token : ")
+    t = Thread(target=start, args=(input_auth,))
+    t.start()
