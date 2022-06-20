@@ -28,7 +28,7 @@ def start():
     while True:
         try:
             random_round = randint(1, 3)
-            req_game, status = requests.get(f"http://kitkabackend.eastus.cloudapp.azure.com:5010/round/finishv2/{random_round}", headers={
+            req_game = requests.get(f"http://kitkabackend.eastus.cloudapp.azure.com:5010/round/finishv2/{random_round}", headers={
                 "authorization": input_auth
             }).json()
             if "BANNED" in str(req_game):
