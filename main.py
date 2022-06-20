@@ -30,9 +30,7 @@ def start():
             random_round = randint(1, 3)
             req_game, status = requests.get(f"http://kitkabackend.eastus.cloudapp.azure.com:5010/round/finishv2/{random_round}", headers={
                 "authorization": input_auth
-            })
-            print(req_game)
-            print(status)
+            }).json()
             if "BANNED" in str(req_game):
                 print(f"{red}[{yellow}*{red}] {white}Account Got Banned")
                 break
