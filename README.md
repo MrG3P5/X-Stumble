@@ -51,7 +51,7 @@ git clone https://github.com/MrG3P5/X-Stumble
 cd X-Stumble
 ```
 ```sh
-pip3 install -r require.txt
+python3 -m pip install -r require.txt
 ```
 ```sh
 python3 main.py
