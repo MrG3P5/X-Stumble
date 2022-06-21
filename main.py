@@ -3,18 +3,22 @@
 import pyfiglet
 import requests
 import os
-import time
+from datetime import datetime
+from pytz import timezone
 from colorama import Fore, init
 
 # Config
-os.environ['TZ'] = 'Asia/Jakarta'
-time.tzset()
 red = Fore.LIGHTRED_EX
 green = Fore.LIGHTGREEN_EX
 yellow = Fore.LIGHTYELLOW_EX
 white = Fore.WHITE
 
 init(autoreset=True)
+
+def logTime():
+    now_utc = datetime.now(timezone('UTC'))
+    now_pacific = now_utc.astimezone(timezone("Asia/Jakarta"))
+    return now_pacific.strftime("%H:%M:%S")
 
 def banner(str):
     os.system("cls||clear")
@@ -39,7 +43,7 @@ def start():
             elif "SERVER_ERROR" in str(req_game):
                 continue
             elif "User" in str(req_game):
-                print(f"{red}[{white}{time.strftime('%H:%M:%S')}{red}] {white}Nickname: {green}{req_game['User']['Username']} {white}| Country: {green}{req_game['User']['Country']} {white}| Trophy: {green}{req_game['User']['SkillRating']} {white}| Crown: {green}{req_game['User']['Crowns']}")
+                print(f"{red}[{white}{logTime()}{red}] {white}Nickname: {green}{req_game['User']['Username']} {white}| Country: {green}{req_game['User']['Country']} {white}| Trophy: {green}{req_game['User']['SkillRating']} {white}| Crown: {green}{req_game['User']['Crowns']}")
         except:
             continue
 
