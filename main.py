@@ -6,7 +6,6 @@ import os
 from datetime import datetime
 from pytz import timezone
 from colorama import Fore, init
-from utils import topCrownLocal, topCrownGlobal, topRankGlobal, topRankLocal
 
 # Config
 red = Fore.LIGHTRED_EX
@@ -45,7 +44,6 @@ def start():
                 continue
             elif "User" in str(req_game):
                 print(f"{red}[{white}{logTime()}{red}] {white}Nickname: {green}{req_game['User']['Username']} {white}| Country: {green}{req_game['User']['Country']} {white}| Trophy: {green}{req_game['User']['SkillRating']} {white}| Crown: {green}{req_game['User']['Crowns']}")
-                print(f"{red}[{white}{logTime()}{red}] {white}CrownLocal: {green}{topCrownLocal(req_game['User']['Username'])}{white} | CrownGlobal: {green}{topCrownGlobal(req_game['User']['Username'])}{white} | RankLocal: {green}{topRankLocal(req_game['User']['Username'])}{white} | RankGlobal: {green}{topRankGlobal(req_game['User']['Username'])}")
         except:
             continue
 
