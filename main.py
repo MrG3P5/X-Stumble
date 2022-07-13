@@ -39,14 +39,14 @@ def start():
             sleep(int(delay_input))
             req_game = requests.get(f"http://kitkabackend.eastus.cloudapp.azure.com:5010/round/finishv2/{round_input}", headers={
                 "authorization": input_auth
-            }).json()
-            if "BANNED" in str(req_game):
+            })
+            if "BANNED" in str(req_game.text) or req_game.status_code == 403:
                 print(f"{red}[{yellow}*{red}] {white}Account Got Banned")
                 break
-            elif "SERVER_ERROR" in str(req_game):
+            elif "SERVER_ERROR" in str(req_game.text):
                 continue
-            elif "User" in str(req_game):
-                print(f"{red}[{white}{logTime()}{red}] {white}Nickname: {green}{req_game['User']['Username']} {white}| Country: {green}{req_game['User']['Country']} {white}| Trophy: {green}{req_game['User']['SkillRating']} {white}| Crown: {green}{req_game['User']['Crowns']}")
+            elif "User" in str(req_game.text):
+                print(f"{red}[{white}{logTime()}{red}] {white}Nickname: {green}{req_game.json()['User']['Username']} {white}| Country: {green}{req_game.json()['User']['Country']} {white}| Trophy: {green}{req_game.json()['User']['SkillRating']} {white}| Crown: {green}{req_game.json()['User']['Crowns']}")
         except:
             continue
 
